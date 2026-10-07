@@ -28,6 +28,14 @@ ${SITE_URL}/services/ca-to-nv-relocation
 ${SITE_URL}/about
 ${SITE_URL}/resources
 ${SITE_URL}/contact
+${SITE_URL}/office
+${SITE_URL}/markets
+${SITE_URL}/markets/summerlin
+${SITE_URL}/markets/henderson-green-valley
+${SITE_URL}/markets/55-plus
+${SITE_URL}/markets/strip-high-rises
+${SITE_URL}/markets/new-construction
+${SITE_URL}/markets/skye-canyon-centennial-hills
 ${SITE_URL}/sitemap.xml
 `;
 

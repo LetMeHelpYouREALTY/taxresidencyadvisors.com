@@ -124,6 +124,8 @@ export default function NevadaGuidePage() {
         <section className="mb-16" aria-label="Related">
           <h2 className="font-playfair text-xl font-bold text-[var(--foreground)]">Related</h2>
           <ul className="mt-4 space-y-2">
+            <li><Link href="/markets" className="text-[var(--accent)] hover:underline">Summerlin, Henderson, 55+, high-rises, and new construction</Link></li>
+            <li><Link href="/office" className="text-[var(--accent)] hover:underline">Henderson office on Green Valley Parkway</Link></li>
             <li><Link href="/for-cpas" className="text-[var(--accent)] hover:underline">For CPAs: refer a client to our Nevada real estate expert</Link></li>
             <li><Link href="/services/tax-residency-planning" className="text-[var(--accent)] hover:underline">Tax residency planning</Link></li>
             <li><Link href="/contact" className="text-[var(--accent)] hover:underline">Contact Dr. Jan Duffy</Link> or <CalendlyPopupLink className="text-[var(--accent)] hover:underline">schedule a call</CalendlyPopupLink></li>

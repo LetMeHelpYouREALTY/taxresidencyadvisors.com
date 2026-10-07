@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
+import { MARKETS } from "@/lib/markets";
 import { EMAIL, HOURS_DISPLAY, NAP, NAP_CITY_LINE, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 export function Footer() {
@@ -16,8 +17,10 @@ export function Footer() {
               Dr. Jan Duffy, Nevada Market Expert
             </p>
             <address className="mt-2 text-sm not-italic text-[var(--foreground)]">
-              <span className="block">{NAP.streetAddress}</span>
-              <span className="block">{NAP_CITY_LINE}</span>
+              <Link href="/office" className="hover:text-[var(--accent)]">
+                <span className="block">{NAP.streetAddress}</span>
+                <span className="block">{NAP_CITY_LINE}</span>
+              </Link>
             </address>
             <p className="mt-2 text-sm text-[var(--foreground)]">{HOURS_DISPLAY}</p>
             <a href={PHONE_HREF} className="mt-2 block text-sm text-[var(--foreground)] hover:text-[var(--accent)]">
@@ -81,6 +84,16 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/office" className="text-sm text-[var(--foreground)] hover:text-[var(--accent)]">
+                  Henderson Office
+                </Link>
+              </li>
+              <li>
+                <Link href="/markets" className="text-sm text-[var(--foreground)] hover:text-[var(--accent)]">
+                  Markets
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-sm text-[var(--foreground)] hover:text-[var(--accent)]">
                   Contact
                 </Link>
@@ -91,15 +104,18 @@ export function Footer() {
           {/* Column 4 — Markets We Serve + For Professionals */}
           <div>
             <h4 className="font-playfair text-sm font-semibold uppercase tracking-widest text-[var(--muted)]">
-              Markets We Serve
+              <Link href="/markets" className="hover:text-[var(--accent)]">
+                Markets We Serve
+              </Link>
             </h4>
             <ul className="mt-3 space-y-2 text-sm text-[var(--foreground)]">
-              <li>Summerlin West & The Ridges</li>
-              <li>Henderson & Green Valley</li>
-              <li>55+ Communities</li>
-              <li>Luxury Strip High-Rises</li>
-              <li>New Construction</li>
-              <li>Skye Canyon & Centennial Hills</li>
+              {MARKETS.map((market) => (
+                <li key={market.slug}>
+                  <Link href={`/markets/${market.slug}`} className="hover:text-[var(--accent)]">
+                    {market.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
             <h4 className="font-playfair mt-6 text-sm font-semibold uppercase tracking-widest text-[var(--muted)]">
               For Professionals

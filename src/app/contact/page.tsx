@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   SITE_URL,
   CALENDLY_URL,
@@ -112,7 +113,10 @@ export default function ContactPage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-              <p className="mt-6 text-sm text-[var(--muted)]">Serving Las Vegas, Henderson, Summerlin, and surrounding areas</p>
+              <p className="mt-6 text-sm text-[var(--muted)]">
+                <Link href="/office" className="text-[var(--accent)] hover:underline">Full Henderson office page</Link>
+                {" "}· Serving Las Vegas, Henderson, Summerlin, and surrounding areas
+              </p>
             </div>
           </aside>
         </div>

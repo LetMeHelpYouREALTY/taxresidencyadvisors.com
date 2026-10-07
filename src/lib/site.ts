@@ -26,6 +26,15 @@ export const NAP = {
 export const NAP_CITY_LINE = `${NAP.addressLocality}, ${NAP.addressRegion} ${NAP.postalCode}`;
 export const NAP_SINGLE_LINE = `${NAP.streetAddress}, ${NAP_CITY_LINE}`;
 
+/** Building pin for 901 N Green Valley Pkwy, Henderson. OpenStreetMap, 2026-10-07. */
+export const GEO = {
+  latitude: 36.0275285,
+  longitude: -115.085995,
+} as const;
+
+/** Last content change used as sitemap lastmod. Not "now" on every request. */
+export const CONTENT_UPDATED = "2026-10-07";
+
 /** Visible hours string, matching the confirmed office range. */
 export const HOURS_DISPLAY = "Monday–Sunday, 8:00 am to 8:00 pm";
 export const HOURS_OPENS = "08:00";
