@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-import { SITE_URL, CALENDLY_URL } from "@/lib/site";
+import { SITE_URL, CALENDLY_URL, EMAIL, PHONE_E164, postalAddressJsonLd } from "@/lib/site";
 import { CalendlyBadge } from "@/components/CalendlyBadge";
 
 export const metadata: Metadata = {
@@ -76,8 +76,9 @@ const jsonLd = {
   description:
     "Tax residency real estate planning for CA-to-NV relocations",
   url: SITE_URL,
-  telephone: "+1-702-222-1964",
-  email: "info@taxresidencyadvisors.com",
+  telephone: PHONE_E164,
+  email: EMAIL,
+  address: postalAddressJsonLd(),
   areaServed: ["California", "Nevada"],
   foundingDate: "2005-01",
   serviceType: [
@@ -95,18 +96,14 @@ const localBusinessJsonLd = {
   alternateName: "TRA",
   description: "Tax residency planning and Las Vegas real estate. Berkshire Hathaway HomeServices Nevada Properties.",
   url: SITE_URL,
-  telephone: "+1-702-222-1964",
-  email: "info@taxresidencyadvisors.com",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Las Vegas",
-    addressRegion: "NV",
-  },
+  telephone: PHONE_E164,
+  email: EMAIL,
+  address: postalAddressJsonLd(),
   areaServed: ["Las Vegas", "Henderson", "Summerlin", "California", "Nevada"],
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-702-222-1964",
-    email: "info@taxresidencyadvisors.com",
+    telephone: PHONE_E164,
+    email: EMAIL,
     url: CALENDLY_URL,
     contactType: "customer service",
     areaServed: "US",

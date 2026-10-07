@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL, CALENDLY_URL } from "@/lib/site";
+import { SITE_URL, CALENDLY_URL, PHONE_E164, postalAddressJsonLd } from "@/lib/site";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
 import { CTA } from "@/components/CTA";
 import { TestimonialCard } from "@/components/TestimonialCard";
@@ -27,7 +27,8 @@ const forCPAsJsonLd = {
     "@type": "Audience",
     name: "CPAs and Tax Professionals",
   },
-  telephone: "+1-702-222-1964",
+  telephone: PHONE_E164,
+  address: postalAddressJsonLd(),
 };
 
 const faqPageJsonLd = {

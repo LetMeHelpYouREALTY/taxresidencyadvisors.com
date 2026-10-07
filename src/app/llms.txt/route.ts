@@ -9,6 +9,7 @@ Dr. Jan Duffy is a Nevada-licensed real estate professional (S.0197614.LLC) with
 - **Brokerage:** Berkshire Hathaway HomeServices Nevada Properties
 - **License:** Nevada S.0197614.LLC
 - **Phone:** 702-222-1964
+- **Office:** 901 N Green Valley Pkwy #200d, Henderson, NV 89074
 - **Website:** ${baseUrl}
 ## Services
 - Residential home buying and selling
@@ -24,6 +25,7 @@ Las Vegas, Henderson, North Las Vegas, and surrounding Southern Nevada communiti
 - [About](${baseUrl}/about)
 ## Contact
 - **Call/Text:** 702-222-1964
+- **Office:** 901 N Green Valley Pkwy #200d, Henderson, NV 89074
 - **Website:** ${baseUrl}
 `;
   return new Response(content, {

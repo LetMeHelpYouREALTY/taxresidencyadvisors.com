@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, PHONE_E164, postalAddressJsonLd } from "@/lib/site";
 import { CTA } from "@/components/CTA";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
 import { StatBar } from "@/components/StatBar";
@@ -49,7 +49,8 @@ const homeJsonLd = {
       name: "Tax Residency Advisors",
       description: "Tax residency planning and real estate investment consulting. Dr. Jan Duffy, Las Vegas real estate expert for CPA-referred relocations.",
       url: SITE_URL,
-      telephone: "+1-702-222-1964",
+      telephone: PHONE_E164,
+      address: postalAddressJsonLd(),
       areaServed: [{ "@type": "State", name: "California" }, { "@type": "State", name: "Nevada" }],
     },
     {
@@ -58,7 +59,8 @@ const homeJsonLd = {
       jobTitle: "Real Estate Agent",
       worksFor: { "@type": "Organization", name: "Berkshire Hathaway HomeServices Nevada Properties" },
       description: "Las Vegas real estate expert. 30+ years, 500+ families, $127M+ career sales. Nevada License S.0197614.LLC.",
-      telephone: "+1-702-222-1964",
+      telephone: PHONE_E164,
+      address: postalAddressJsonLd(),
     },
   ],
 };

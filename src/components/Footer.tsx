@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
+import { EMAIL, NAP, NAP_CITY_LINE, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -14,14 +15,18 @@ export function Footer() {
             <p className="mt-3 text-sm text-[var(--foreground)]">
               Dr. Jan Duffy, Nevada Market Expert
             </p>
-            <a href="tel:+17022221964" className="mt-2 block text-sm text-[var(--foreground)] hover:text-[var(--accent)]">
-              702-222-1964
+            <address className="mt-2 text-sm not-italic text-[var(--foreground)]">
+              <span className="block">{NAP.streetAddress}</span>
+              <span className="block">{NAP_CITY_LINE}</span>
+            </address>
+            <a href={PHONE_HREF} className="mt-2 block text-sm text-[var(--foreground)] hover:text-[var(--accent)]">
+              {PHONE_DISPLAY}
             </a>
             <a
-              href="mailto:info@taxresidencyadvisors.com"
+              href={`mailto:${EMAIL}`}
               className="block text-sm text-[var(--foreground)] hover:text-[var(--accent)]"
             >
-              info@taxresidencyadvisors.com
+              {EMAIL}
             </a>
           </div>
 

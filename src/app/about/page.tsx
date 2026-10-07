@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, NAP_SINGLE_LINE, PHONE_DISPLAY, PHONE_E164, PHONE_HREF, postalAddressJsonLd } from "@/lib/site";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
 
 export const metadata: Metadata = {
@@ -20,8 +20,9 @@ const personJsonLd = {
   jobTitle: "Real Estate Agent",
   worksFor: { "@type": "Organization", name: "Berkshire Hathaway HomeServices Nevada Properties" },
   description: "Las Vegas real estate expert. Ph.D. in Market Research & Consumer Behavior. 30+ years, 500+ families, $127M+ career sales.",
-  telephone: "+1-702-222-1964",
+  telephone: PHONE_E164,
   email: "info@taxresidencyadvisors.com",
+  address: postalAddressJsonLd(),
 };
 
 export default function AboutPage() {
@@ -78,7 +79,8 @@ export default function AboutPage() {
           </div>
           <p className="mt-8 font-playfair text-lg text-[var(--accent)]">— Dr. Jan Duffy</p>
           <p className="text-sm text-[var(--muted)]">NV License S.0197614.LLC</p>
-          <a href="tel:+17022221964" className="mt-1 block text-sm text-[var(--foreground)] hover:text-[var(--accent)]">702-222-1964</a>
+          <p className="mt-1 text-sm text-[var(--foreground)]">{NAP_SINGLE_LINE}</p>
+          <a href={PHONE_HREF} className="mt-1 block text-sm text-[var(--foreground)] hover:text-[var(--accent)]">{PHONE_DISPLAY}</a>
           <span className="mt-1 block text-sm text-[var(--foreground)]/90">or <CalendlyPopupLink className="text-[var(--accent)] hover:underline">schedule a call</CalendlyPopupLink></span>
         </div>
       </section>

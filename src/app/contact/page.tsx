@@ -1,5 +1,19 @@
 import type { Metadata } from "next";
-import { SITE_URL, CALENDLY_URL } from "@/lib/site";
+import {
+  SITE_URL,
+  CALENDLY_URL,
+  EMAIL,
+  MAPS_DIRECTIONS_URL,
+  MAPS_EMBED_URL,
+  MAPS_REVIEWS_URL,
+  NAP,
+  NAP_CITY_LINE,
+  NAP_SINGLE_LINE,
+  PHONE_DISPLAY,
+  PHONE_E164,
+  PHONE_HREF,
+  postalAddressJsonLd,
+} from "@/lib/site";
 import { ContactPageForm } from "@/components/ContactPageForm";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
 import { CalendlyInlineWidget } from "@/components/CalendlyInlineWidget";
@@ -7,7 +21,7 @@ import { CalendlyInlineWidget } from "@/components/CalendlyInlineWidget";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Schedule a consultation with Dr. Jan Duffy. CPAs and tax professionals: refer a client. Clients relocating to Nevada: request a consultation. 702-222-1964.",
+    `Schedule a consultation with Dr. Jan Duffy at ${NAP_SINGLE_LINE}. CPAs and tax professionals: refer a client. Call ${PHONE_DISPLAY}.`,
   openGraph: {
     title: "Contact | Tax Residency Advisors",
     url: `${SITE_URL}/contact`,
@@ -20,14 +34,14 @@ const contactJsonLd = {
   name: "Tax Residency Advisors",
   description: "Tax residency planning and Las Vegas real estate. Berkshire Hathaway HomeServices Nevada Properties.",
   url: SITE_URL,
-  telephone: "+1-702-222-1964",
-  email: "info@taxresidencyadvisors.com",
-  address: { "@type": "PostalAddress", addressLocality: "Las Vegas", addressRegion: "NV" },
+  telephone: PHONE_E164,
+  email: EMAIL,
+  address: postalAddressJsonLd(),
   areaServed: ["Las Vegas", "Henderson", "Summerlin"],
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-702-222-1964",
-    email: "info@taxresidencyadvisors.com",
+    telephone: PHONE_E164,
+    email: EMAIL,
     url: CALENDLY_URL,
     contactType: "customer service",
     areaServed: "US",
@@ -76,10 +90,25 @@ export default function ContactPage() {
               <p className="mt-1 text-sm text-[var(--accent)]">Las Vegas Real Estate Expert</p>
               <p className="mt-4 text-sm text-[var(--foreground)]">Berkshire Hathaway HomeServices Nevada Properties</p>
               <p className="text-sm text-[var(--muted)]">NV License: S.0197614.LLC</p>
-              <a href="tel:+17022221964" className="mt-4 block text-[var(--foreground)] hover:text-[var(--accent)]">📞 702-222-1964</a>
-              <a href="mailto:info@taxresidencyadvisors.com" className="block text-[var(--foreground)] hover:text-[var(--accent)]">📧 info@taxresidencyadvisors.com</a>
-              <p className="mt-6 text-sm text-[var(--muted)]">Office: Las Vegas, Nevada</p>
-              <p className="text-sm text-[var(--muted)]">Serving: All of Las Vegas, Henderson, Summerlin, and surrounding areas</p>
+              <address className="mt-4 text-sm not-italic text-[var(--foreground)]">
+                <span className="block">{NAP.name}</span>
+                <span className="block">{NAP.streetAddress}</span>
+                <span className="block">{NAP_CITY_LINE}</span>
+              </address>
+              <a href={PHONE_HREF} className="mt-4 block text-[var(--foreground)] hover:text-[var(--accent)]">Call {PHONE_DISPLAY}</a>
+              <a href={`mailto:${EMAIL}`} className="block text-[var(--foreground)] hover:text-[var(--accent)]">{EMAIL}</a>
+              <div className="mt-4 flex flex-col gap-2 text-sm">
+                <a href={MAPS_DIRECTIONS_URL} className="text-[var(--accent)] hover:underline" target="_blank" rel="noopener noreferrer">Directions</a>
+                <a href={MAPS_REVIEWS_URL} className="text-[var(--accent)] hover:underline" target="_blank" rel="noopener noreferrer">View Google Reviews</a>
+              </div>
+              <iframe
+                title={`Map of ${NAP.name}, ${NAP_SINGLE_LINE}`}
+                src={MAPS_EMBED_URL}
+                className="mt-6 h-64 w-full rounded-lg border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <p className="mt-6 text-sm text-[var(--muted)]">Serving Las Vegas, Henderson, Summerlin, and surrounding areas</p>
             </div>
           </aside>
         </div>
