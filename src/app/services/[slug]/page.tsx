@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getServiceBySlug, getAllServiceSlugs, type Service } from "@/lib/services";
+import { getServiceBySlug, getAllServiceSlugs } from "@/lib/services";
 import { SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { serviceJsonLd, withCanonical } from "@/lib/schema";
 import { CTA } from "@/components/CTA";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
 
@@ -16,14 +18,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) return { title: "Service" };
-  return {
+  return withCanonical(`/services/${slug}`, {
     title: service.title,
     description: service.shortDescription,
     openGraph: {
       title: `${service.title} | Tax Residency Advisors`,
       url: `${SITE_URL}/services/${slug}`,
     },
-  };
+  });
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
@@ -31,17 +33,15 @@ export default async function ServiceDetailPage({ params }: Props) {
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
-  const serviceJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: service.title,
-    description: service.shortDescription,
-    provider: { "@type": "Organization", name: "Tax Residency Advisors" },
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <JsonLd
+        data={serviceJsonLd({
+          path: `/services/${service.slug}`,
+          name: service.title,
+          description: service.shortDescription,
+        })}
+      />
 
       <section className="hero-gradient-mesh px-4 pt-16 pb-20 sm:px-6">
         <div className="mx-auto max-w-4xl">

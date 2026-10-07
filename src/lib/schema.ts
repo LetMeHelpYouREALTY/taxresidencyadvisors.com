@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  CALENDLY_URL,
   EMAIL,
   GEO,
   HOURS_CLOSES,
@@ -81,7 +82,17 @@ export function siteGraph() {
           closes: HOURS_CLOSES,
         },
         areaServed: ["Las Vegas", "Henderson", "Summerlin", "California", "Nevada"],
+        foundingDate: "2005-01",
         founder: { "@id": PERSON_ID },
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: PHONE_E164,
+          email: EMAIL,
+          url: CALENDLY_URL,
+          contactType: "customer service",
+          areaServed: "US",
+          availableLanguage: "English",
+        },
       },
       {
         "@type": "Person",

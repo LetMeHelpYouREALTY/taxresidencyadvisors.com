@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL, PHONE_E164, postalAddressJsonLd } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { homeWebPageJsonLd, withCanonical } from "@/lib/schema";
 import { CTA } from "@/components/CTA";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
 import { StatBar } from "@/components/StatBar";
 import { TestimonialCard } from "@/components/TestimonialCard";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/", {
   title: "Dr. Jan Duffy",
   description:
     "Your client decided to move to Nevada. Dr. Jan Duffy is the Las Vegas real estate expert CPAs and tax advisors trust. 30+ years, 500+ families. Refer a client or start your relocation.",
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Tax Residency Advisors",
   },
-};
+});
 
 const HOME_STATS = [
   { value: "30+", label: "Years" },
@@ -41,34 +43,10 @@ const AFFILIATIONS = [
   "National Association of Realtors",
 ];
 
-const homeJsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      name: "Tax Residency Advisors",
-      description: "Tax residency planning and real estate investment consulting. Dr. Jan Duffy, Las Vegas real estate expert for CPA-referred relocations.",
-      url: SITE_URL,
-      telephone: PHONE_E164,
-      address: postalAddressJsonLd(),
-      areaServed: [{ "@type": "State", name: "California" }, { "@type": "State", name: "Nevada" }],
-    },
-    {
-      "@type": "Person",
-      name: "Dr. Jan Duffy",
-      jobTitle: "Real Estate Agent",
-      worksFor: { "@type": "Organization", name: "Berkshire Hathaway HomeServices Nevada Properties" },
-      description: "Las Vegas real estate expert. 30+ years, 500+ families, $127M+ career sales. Nevada License S.0197614.LLC.",
-      telephone: PHONE_E164,
-      address: postalAddressJsonLd(),
-    },
-  ],
-};
-
 export default function Home() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
+      <JsonLd data={homeWebPageJsonLd()} />
       {/* Hero */}
       <section className="hero-gradient-mesh relative min-h-[85vh] flex flex-col justify-center px-4 pt-20 pb-16 sm:px-6">
         <div className="relative z-10 mx-auto max-w-4xl">

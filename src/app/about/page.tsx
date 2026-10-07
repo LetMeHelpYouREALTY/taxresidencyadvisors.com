@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL, NAP_SINGLE_LINE, PHONE_DISPLAY, PHONE_E164, PHONE_HREF, postalAddressJsonLd } from "@/lib/site";
+import { SITE_URL, NAP_SINGLE_LINE, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
+import { withCanonical } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/about", {
   title: "About Dr. Jan Duffy | Las Vegas Real Estate Expert",
   description:
     "Meet Dr. Jan Duffy — Ph.D., 30+ years Las Vegas market expertise, $127M+ career sales, 500+ families. The real estate expert CPAs trust for Nevada tax-residency relocations.",
@@ -11,31 +12,21 @@ export const metadata: Metadata = {
     title: "About Dr. Jan Duffy | Tax Residency Advisors",
     url: `${SITE_URL}/about`,
   },
-};
-
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Dr. Jan Duffy",
-  jobTitle: "Real Estate Agent",
-  worksFor: { "@type": "Organization", name: "Berkshire Hathaway HomeServices Nevada Properties" },
-  description: "Las Vegas real estate expert. Ph.D. in Market Research & Consumer Behavior. 30+ years, 500+ families, $127M+ career sales.",
-  telephone: PHONE_E164,
-  email: "info@taxresidencyadvisors.com",
-  address: postalAddressJsonLd(),
-};
+});
 
 export default function AboutPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
-
       {/* Hero */}
       <section className="hero-gradient-mesh px-4 pt-16 pb-20 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="aspect-[4/3] rounded-lg bg-white/10" aria-hidden>
-            {/* Photo placeholder */}
-          </div>
+          <img
+            src="/images/about-green-valley.jpg"
+            alt="North Green Valley Parkway in Henderson at dusk, near the Tax Residency Advisors office"
+            width={1152}
+            height={864}
+            className="aspect-[4/3] w-full rounded-lg object-cover"
+          />
           <div>
             <h1 className="font-playfair text-4xl font-bold text-[var(--foreground)] sm:text-5xl">Meet Dr. Jan Duffy</h1>
             <p className="mt-4 text-lg text-[var(--muted)]">

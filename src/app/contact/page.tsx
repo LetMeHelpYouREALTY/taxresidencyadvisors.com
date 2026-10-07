@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   SITE_URL,
-  CALENDLY_URL,
   EMAIL,
   MAPS_DIRECTIONS_URL,
   MAPS_EMBED_URL,
@@ -12,16 +11,14 @@ import {
   NAP_CITY_LINE,
   NAP_SINGLE_LINE,
   PHONE_DISPLAY,
-  PHONE_E164,
   PHONE_HREF,
-  openingHoursJsonLd,
-  postalAddressJsonLd,
 } from "@/lib/site";
+import { withCanonical } from "@/lib/schema";
 import { ContactPageForm } from "@/components/ContactPageForm";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
 import { CalendlyInlineWidget } from "@/components/CalendlyInlineWidget";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/contact", {
   title: "Contact",
   description:
     `Schedule a consultation with Dr. Jan Duffy at ${NAP_SINGLE_LINE}. CPAs and tax professionals: refer a client. Call ${PHONE_DISPLAY}.`,
@@ -29,35 +26,11 @@ export const metadata: Metadata = {
     title: "Contact | Tax Residency Advisors",
     url: `${SITE_URL}/contact`,
   },
-};
-
-const contactJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Tax Residency Advisors",
-  description: "Tax residency planning and Las Vegas real estate. Berkshire Hathaway HomeServices Nevada Properties.",
-  url: SITE_URL,
-  telephone: PHONE_E164,
-  email: EMAIL,
-  address: postalAddressJsonLd(),
-  openingHoursSpecification: openingHoursJsonLd(),
-  areaServed: ["Las Vegas", "Henderson", "Summerlin"],
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: PHONE_E164,
-    email: EMAIL,
-    url: CALENDLY_URL,
-    contactType: "customer service",
-    areaServed: "US",
-    availableLanguage: "English",
-  },
-};
+});
 
 export default function ContactPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }} />
-
       <section className="hero-gradient-mesh px-4 pt-16 pb-12 sm:px-6">
         <div className="mx-auto max-w-4xl">
           <h1 className="font-playfair text-4xl font-bold text-[var(--foreground)] sm:text-5xl">Contact</h1>

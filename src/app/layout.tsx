@@ -3,6 +3,10 @@ import Script from "next/script";
 import { Playfair_Display, DM_Sans } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
+import { CalendlyBadge } from "@/components/CalendlyBadge";
+import { siteGraph } from "@/lib/schema";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -16,9 +20,6 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
 });
-
-import { SITE_URL, CALENDLY_URL, EMAIL, PHONE_E164, openingHoursJsonLd, postalAddressJsonLd } from "@/lib/site";
-import { CalendlyBadge } from "@/components/CalendlyBadge";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -68,50 +69,6 @@ export const metadata: Metadata = {
   }),
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Tax Residency Advisors",
-  alternateName: "TRA",
-  description:
-    "Tax residency real estate planning for CA-to-NV relocations",
-  url: SITE_URL,
-  telephone: PHONE_E164,
-  email: EMAIL,
-  address: postalAddressJsonLd(),
-  areaServed: ["California", "Nevada"],
-  foundingDate: "2005-01",
-  serviceType: [
-    "Tax Residency Real Estate Planning",
-    "CA-to-NV Relocation",
-    "Family Office Real Estate Consulting",
-    "Multi-State Real Estate Advisory",
-  ],
-};
-
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Tax Residency Advisors",
-  alternateName: "TRA",
-  description: "Tax residency planning and Las Vegas real estate. Berkshire Hathaway HomeServices Nevada Properties.",
-  url: SITE_URL,
-  telephone: PHONE_E164,
-  email: EMAIL,
-  address: postalAddressJsonLd(),
-  openingHoursSpecification: openingHoursJsonLd(),
-  areaServed: ["Las Vegas", "Henderson", "Summerlin", "California", "Nevada"],
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: PHONE_E164,
-    email: EMAIL,
-    url: CALENDLY_URL,
-    contactType: "customer service",
-    areaServed: "US",
-    availableLanguage: "English",
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -142,14 +99,7 @@ export default function RootLayout({
             gtag('config', 'G-ET0Y55X1RC');
           `}
         </Script>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
-        />
+        <JsonLd data={siteGraph()} />
         <Navbar />
         <main>{children}</main>
         <Footer />

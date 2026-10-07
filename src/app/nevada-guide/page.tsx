@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
+import { JsonLd } from "@/components/JsonLd";
+import { articleJsonLd, withCanonical } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/nevada-guide", {
   title: "The Complete Guide to Relocating from California to Nevada (2026)",
   description:
     "Everything your clients need to know about moving to Nevada: domicile, neighborhoods, new construction, timeline, and working with a CPA and real estate agent. By Dr. Jan Duffy.",
@@ -11,25 +13,22 @@ export const metadata: Metadata = {
     title: "California to Nevada Relocation Guide (2026) | Tax Residency Advisors",
     url: `${SITE_URL}/nevada-guide`,
   },
-};
+});
 
 const NEVADA_GUIDE_UPDATED = "2026-02-09";
-
-const articleJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "The Complete Guide to Relocating from California to Nevada (2026)",
-  author: { "@type": "Person", name: "Dr. Jan Duffy" },
-  description: "Everything your clients need to know about relocating from California to Nevada — domicile, neighborhoods, new construction, and timeline.",
-  url: `${SITE_URL}/nevada-guide`,
-  datePublished: "2026-01-01",
-  dateModified: NEVADA_GUIDE_UPDATED,
-};
 
 export default function NevadaGuidePage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <JsonLd
+        data={articleJsonLd({
+          path: "/nevada-guide",
+          headline: "The Complete Guide to Relocating from California to Nevada (2026)",
+          description: "Everything your clients need to know about relocating from California to Nevada — domicile, neighborhoods, new construction, and timeline.",
+          datePublished: "2026-01-01",
+          dateModified: NEVADA_GUIDE_UPDATED,
+        })}
+      />
 
       <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <header className="mb-16">
