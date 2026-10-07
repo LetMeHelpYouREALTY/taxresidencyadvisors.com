@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-import { SITE_URL, CALENDLY_URL, EMAIL, PHONE_E164, postalAddressJsonLd } from "@/lib/site";
+import { SITE_URL, CALENDLY_URL, EMAIL, PHONE_E164, openingHoursJsonLd, postalAddressJsonLd } from "@/lib/site";
 import { CalendlyBadge } from "@/components/CalendlyBadge";
 
 export const metadata: Metadata = {
@@ -99,6 +99,7 @@ const localBusinessJsonLd = {
   telephone: PHONE_E164,
   email: EMAIL,
   address: postalAddressJsonLd(),
+  openingHoursSpecification: openingHoursJsonLd(),
   areaServed: ["Las Vegas", "Henderson", "Summerlin", "California", "Nevada"],
   contactPoint: {
     "@type": "ContactPoint",

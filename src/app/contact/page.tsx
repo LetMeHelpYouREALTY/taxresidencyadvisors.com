@@ -6,12 +6,14 @@ import {
   MAPS_DIRECTIONS_URL,
   MAPS_EMBED_URL,
   MAPS_REVIEWS_URL,
+  HOURS_DISPLAY,
   NAP,
   NAP_CITY_LINE,
   NAP_SINGLE_LINE,
   PHONE_DISPLAY,
   PHONE_E164,
   PHONE_HREF,
+  openingHoursJsonLd,
   postalAddressJsonLd,
 } from "@/lib/site";
 import { ContactPageForm } from "@/components/ContactPageForm";
@@ -37,6 +39,7 @@ const contactJsonLd = {
   telephone: PHONE_E164,
   email: EMAIL,
   address: postalAddressJsonLd(),
+  openingHoursSpecification: openingHoursJsonLd(),
   areaServed: ["Las Vegas", "Henderson", "Summerlin"],
   contactPoint: {
     "@type": "ContactPoint",
@@ -95,6 +98,7 @@ export default function ContactPage() {
                 <span className="block">{NAP.streetAddress}</span>
                 <span className="block">{NAP_CITY_LINE}</span>
               </address>
+              <p className="mt-4 text-sm text-[var(--foreground)]">Hours: {HOURS_DISPLAY}</p>
               <a href={PHONE_HREF} className="mt-4 block text-[var(--foreground)] hover:text-[var(--accent)]">Call {PHONE_DISPLAY}</a>
               <a href={`mailto:${EMAIL}`} className="block text-[var(--foreground)] hover:text-[var(--accent)]">{EMAIL}</a>
               <div className="mt-4 flex flex-col gap-2 text-sm">

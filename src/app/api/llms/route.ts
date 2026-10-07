@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import { NAP_SINGLE_LINE, PHONE_DISPLAY, SITE_URL } from "@/lib/site";
+import { HOURS_DISPLAY, NAP_SINGLE_LINE, PHONE_DISPLAY, SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
 
 const LLMS_CONTENT = `# Tax Residency Advisors
 
-Tax Residency Advisors (TRA) provides tax residency real estate planning and CA-to-NV relocation services for high-net-worth families, CPAs, and tax professionals. Dr. Jan Duffy is the Las Vegas real estate expert trusted by CPAs for Nevada domicile and relocation. Office: ${NAP_SINGLE_LINE}. Phone: ${PHONE_DISPLAY}.
+Tax Residency Advisors (TRA) provides tax residency real estate planning and CA-to-NV relocation services for high-net-worth families, CPAs, and tax professionals. Dr. Jan Duffy is the Las Vegas real estate expert trusted by CPAs for Nevada domicile and relocation. Office: ${NAP_SINGLE_LINE}. Hours: ${HOURS_DISPLAY}. Phone: ${PHONE_DISPLAY}.
 
 ## Topics
 

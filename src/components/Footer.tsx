@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
-import { EMAIL, NAP, NAP_CITY_LINE, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
+import { EMAIL, HOURS_DISPLAY, NAP, NAP_CITY_LINE, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -19,6 +19,7 @@ export function Footer() {
               <span className="block">{NAP.streetAddress}</span>
               <span className="block">{NAP_CITY_LINE}</span>
             </address>
+            <p className="mt-2 text-sm text-[var(--foreground)]">{HOURS_DISPLAY}</p>
             <a href={PHONE_HREF} className="mt-2 block text-sm text-[var(--foreground)] hover:text-[var(--accent)]">
               {PHONE_DISPLAY}
             </a>

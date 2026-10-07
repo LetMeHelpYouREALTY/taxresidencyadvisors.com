@@ -11,8 +11,8 @@ export const PHONE_HREF = "tel:+17022221964";
 export const EMAIL = "info@taxresidencyadvisors.com";
 
 /**
- * Office NAP. Street line is the exact string supplied for the Google Business Profile.
- * Hours are omitted until confirmed against that profile.
+ * Office NAP. Street line and hours match the Google Business Profile.
+ * One daily range was given, with no closed days, so hours apply Monday–Sunday.
  */
 export const NAP = {
   name: "Tax Residency Advisors",
@@ -25,6 +25,21 @@ export const NAP = {
 
 export const NAP_CITY_LINE = `${NAP.addressLocality}, ${NAP.addressRegion} ${NAP.postalCode}`;
 export const NAP_SINGLE_LINE = `${NAP.streetAddress}, ${NAP_CITY_LINE}`;
+
+/** Visible hours string, matching the confirmed office range. */
+export const HOURS_DISPLAY = "Monday–Sunday, 8:00 am to 8:00 pm";
+export const HOURS_OPENS = "08:00";
+export const HOURS_CLOSES = "20:00";
+
+const OFFICE_DAYS = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+] as const;
 
 const MAPS_QUERY = encodeURIComponent(NAP_SINGLE_LINE);
 
@@ -40,5 +55,14 @@ export function postalAddressJsonLd() {
     addressRegion: NAP.addressRegion,
     postalCode: NAP.postalCode,
     addressCountry: NAP.addressCountry,
+  };
+}
+
+export function openingHoursJsonLd() {
+  return {
+    "@type": "OpeningHoursSpecification" as const,
+    dayOfWeek: [...OFFICE_DAYS],
+    opens: HOURS_OPENS,
+    closes: HOURS_CLOSES,
   };
 }
