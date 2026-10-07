@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
+import { withCanonical } from "@/lib/schema";
 import { CASE_STUDIES } from "@/lib/case-studies";
 import { CTA } from "@/components/CTA";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/case-studies", {
   title: "Case Studies | Tax Residency & Nevada Real Estate",
   description:
     "How we help high-net-worth families and family offices: California executive relocations, family office portfolio optimization, tech founder residency planning, and multi-generational transitions.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     title: "Case Studies | Tax Residency Advisors",
     url: `${SITE_URL}/case-studies`,
   },
-};
+});
 
 export default function CaseStudiesPage() {
   return (

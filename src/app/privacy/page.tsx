@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { withCanonical } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/privacy", {
   title: "Privacy Policy",
   description: "Privacy policy for taxresidencyadvisors.com and Tax Residency Advisors.",
-};
+});
 
 export default function PrivacyPage() {
   return (

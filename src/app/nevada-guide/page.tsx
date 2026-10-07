@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
+import { JsonLd } from "@/components/JsonLd";
+import { articleJsonLd, withCanonical } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/nevada-guide", {
   title: "The Complete Guide to Relocating from California to Nevada (2026)",
   description:
     "Everything your clients need to know about moving to Nevada: domicile, neighborhoods, new construction, timeline, and working with a CPA and real estate agent. By Dr. Jan Duffy.",
@@ -11,25 +13,22 @@ export const metadata: Metadata = {
     title: "California to Nevada Relocation Guide (2026) | Tax Residency Advisors",
     url: `${SITE_URL}/nevada-guide`,
   },
-};
+});
 
 const NEVADA_GUIDE_UPDATED = "2026-02-09";
-
-const articleJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "The Complete Guide to Relocating from California to Nevada (2026)",
-  author: { "@type": "Person", name: "Dr. Jan Duffy" },
-  description: "Everything your clients need to know about relocating from California to Nevada — domicile, neighborhoods, new construction, and timeline.",
-  url: `${SITE_URL}/nevada-guide`,
-  datePublished: "2026-01-01",
-  dateModified: NEVADA_GUIDE_UPDATED,
-};
 
 export default function NevadaGuidePage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <JsonLd
+        data={articleJsonLd({
+          path: "/nevada-guide",
+          headline: "The Complete Guide to Relocating from California to Nevada (2026)",
+          description: "Everything your clients need to know about relocating from California to Nevada — domicile, neighborhoods, new construction, and timeline.",
+          datePublished: "2026-01-01",
+          dateModified: NEVADA_GUIDE_UPDATED,
+        })}
+      />
 
       <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <header className="mb-16">
@@ -124,6 +123,8 @@ export default function NevadaGuidePage() {
         <section className="mb-16" aria-label="Related">
           <h2 className="font-playfair text-xl font-bold text-[var(--foreground)]">Related</h2>
           <ul className="mt-4 space-y-2">
+            <li><Link href="/markets" className="text-[var(--accent)] hover:underline">Summerlin, Henderson, 55+, high-rises, and new construction</Link></li>
+            <li><Link href="/office" className="text-[var(--accent)] hover:underline">Henderson office on Green Valley Parkway</Link></li>
             <li><Link href="/for-cpas" className="text-[var(--accent)] hover:underline">For CPAs: refer a client to our Nevada real estate expert</Link></li>
             <li><Link href="/services/tax-residency-planning" className="text-[var(--accent)] hover:underline">Tax residency planning</Link></li>
             <li><Link href="/contact" className="text-[var(--accent)] hover:underline">Contact Dr. Jan Duffy</Link> or <CalendlyPopupLink className="text-[var(--accent)] hover:underline">schedule a call</CalendlyPopupLink></li>

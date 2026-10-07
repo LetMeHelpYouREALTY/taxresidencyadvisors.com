@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getAllServiceSlugs } from "@/lib/services";
 import { getAllResourceSlugs, getResourceBySlug } from "@/lib/resources";
-import { SITE_URL } from "@/lib/site";
+import { getAllMarketSlugs } from "@/lib/markets";
+import { CONTENT_UPDATED, SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const serviceSlugs = getAllServiceSlugs();
@@ -34,6 +35,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/resources`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
     ...resourceUrls,
     { url: `${SITE_URL}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/office`, lastModified: new Date(CONTENT_UPDATED), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/markets`, lastModified: new Date(CONTENT_UPDATED), changeFrequency: "monthly", priority: 0.85 },
+    ...getAllMarketSlugs().map((slug) => ({
+      url: `${SITE_URL}/markets/${slug}`,
+      lastModified: new Date(CONTENT_UPDATED),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     { url: `${SITE_URL}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ];

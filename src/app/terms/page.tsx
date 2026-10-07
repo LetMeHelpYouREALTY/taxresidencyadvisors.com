@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { withCanonical } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/terms", {
   title: "Terms of Use",
   description: "Terms of use for taxresidencyadvisors.com.",
-};
+});
 
 export default function TermsPage() {
   return (

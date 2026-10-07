@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
+import { withCanonical } from "@/lib/schema";
 import { RESOURCES } from "@/lib/resources";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/resources", {
   title: "Resources",
   description:
     "Guides and checklists for CPAs and clients: Nevada domicile checklist, year-end relocation timeline, and tax-residency real estate planning. By Dr. Jan Duffy, Tax Residency Advisors.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     description: "Nevada domicile and relocation guides for CPAs and clients. Tax Residency Advisors.",
     url: `${SITE_URL}/resources`,
   },
-};
+});
 
 export default function ResourcesPage() {
   return (

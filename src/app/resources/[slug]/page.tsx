@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { articleJsonLd, withCanonical } from "@/lib/schema";
 import { getResourceBySlug, getAllResourceSlugs } from "@/lib/resources";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
 
@@ -15,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const article = getResourceBySlug(slug);
   if (!article) return { title: "Not Found" };
-  return {
+  return withCanonical(`/resources/${article.slug}`, {
     title: article.title,
     description: article.description,
     openGraph: {
@@ -23,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: article.description,
       url: `${SITE_URL}/resources/${article.slug}`,
     },
-  };
+  });
 }
 
 export default async function ResourceArticlePage({ params }: PageProps) {
@@ -31,22 +33,16 @@ export default async function ResourceArticlePage({ params }: PageProps) {
   const article = getResourceBySlug(slug);
   if (!article) notFound();
 
-  const articleJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: article.title,
-    author: { "@type": "Person", name: "Dr. Jan Duffy" },
-    description: article.description,
-    url: `${SITE_URL}/resources/${article.slug}`,
-    datePublished: article.datePublished,
-    dateModified: article.dateModified,
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      <JsonLd
+        data={articleJsonLd({
+          path: `/resources/${article.slug}`,
+          headline: article.title,
+          description: article.description,
+          datePublished: article.datePublished,
+          dateModified: article.dateModified,
+        })}
       />
       <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <header className="mb-12">

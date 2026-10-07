@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL, CALENDLY_URL } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { faqJsonLd, withCanonical } from "@/lib/schema";
 import { CalendlyPopupLink } from "@/components/CalendlyPopupLink";
 import { CTA } from "@/components/CTA";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { ForCPAsReferralForm } from "@/components/ForCPAsReferralForm";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/for-cpas", {
   title: "For CPAs & Tax Advisors | Refer Your Clients to Dr. Jan Duffy",
   description:
     "When your client establishes Nevada residency, you need a real estate expert who understands tax timelines and domicile documentation. Refer your client to Dr. Jan Duffy — 30+ years, 500+ families.",
@@ -15,75 +17,7 @@ export const metadata: Metadata = {
     description: "A real estate partner your clients and your reputation deserve. Refer a client today.",
     url: `${SITE_URL}/for-cpas`,
   },
-};
-
-const forCPAsJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Tax Residency Advisors",
-  description: "Real estate partner for CPAs and tax professionals referring clients for Nevada tax-residency relocations.",
-  url: `${SITE_URL}/for-cpas`,
-  audience: {
-    "@type": "Audience",
-    name: "CPAs and Tax Professionals",
-  },
-  telephone: "+1-702-222-1964",
-};
-
-const faqPageJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Do I need to be involved in the real estate transaction?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Not at all. Once you refer your client, I handle everything. But I'm happy to coordinate with you on domicile documentation, closing timelines, or anything else that supports the tax strategy.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What markets do you cover?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "All of Las Vegas and Henderson — Summerlin, The Ridges, Red Rock Country Club, Skye Canyon, Centennial Hills, 55+ communities (Sun City, Del Webb, Heritage at Stonebridge), luxury Strip high-rises, and all new construction from Century Communities, KB Home, Lennar, Pulte, and Toll Brothers. If they're moving to Nevada, I've got it covered.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What about selling their California property?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "I partner with top-tier California agents (including our own KLB team with Kelly Lynn Boyle, CA Licensed Broker) to handle the CA disposition. Your client gets coordinated buy/sell service across both states.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "My client needs to close before December 31st. Can you guarantee that?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "I can't guarantee anything in real estate — but I can tell you that I've never missed a year-end deadline on a CPA-referred relocation. I build in backup options, I stay on top of every timeline, and I communicate proactively.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is there a formal referral agreement?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "I keep it simple. A referral is a referral — you send your client my way, I take excellent care of them. If you'd like something in writing for your records, I'm happy to provide a professional referral acknowledgment.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How do I know my client is being taken care of?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "I'll send you a status update when I first connect with your client, when we identify target properties, when we go under contract, and when we close. If you want more frequent updates, just say the word.",
-      },
-    },
-  ],
-};
+});
 
 const FAQ = [
   {
@@ -115,8 +49,7 @@ const FAQ = [
 export default function ForCPAsPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(forCPAsJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }} />
+      <JsonLd data={faqJsonLd(FAQ.map((item) => ({ q: item.q, a: item.a })))} />
 
       {/* Hero */}
       <section className="hero-gradient-mesh px-4 pt-16 pb-20 sm:px-6">

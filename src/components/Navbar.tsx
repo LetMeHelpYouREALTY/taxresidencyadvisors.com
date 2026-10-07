@@ -10,8 +10,10 @@ const MAIN_LINKS = [
   { href: "/about", label: "About Dr. Jan" },
   { href: "/for-cpas", label: "For CPAs & Advisors" },
   { href: "/nevada-guide", label: "Nevada Guide" },
+  { href: "/markets", label: "Markets" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/resources", label: "Resources" },
+  { href: "/office", label: "Office" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -174,8 +176,17 @@ export function Navbar() {
               <Link href="/nevada-guide" className="rounded py-3 text-[var(--foreground)]" onClick={() => setMobileOpen(false)}>
                 Nevada Guide
               </Link>
+              <Link href="/markets" className="rounded py-3 text-[var(--foreground)]" onClick={() => setMobileOpen(false)}>
+                Markets
+              </Link>
               <Link href="/case-studies" className="rounded py-3 text-[var(--foreground)]" onClick={() => setMobileOpen(false)}>
                 Case Studies
+              </Link>
+              <Link href="/resources" className="rounded py-3 text-[var(--foreground)]" onClick={() => setMobileOpen(false)}>
+                Resources
+              </Link>
+              <Link href="/office" className="rounded py-3 text-[var(--foreground)]" onClick={() => setMobileOpen(false)}>
+                Office
               </Link>
               <Link href="/contact" className="rounded py-3 text-[var(--foreground)]" onClick={() => setMobileOpen(false)}>
                 Contact

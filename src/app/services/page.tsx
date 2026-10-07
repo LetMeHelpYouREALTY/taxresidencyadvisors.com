@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
+import { withCanonical } from "@/lib/schema";
 import { SERVICES } from "@/lib/services";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/services", {
   title: "Services | Tax Residency & Real Estate Consulting",
   description:
     "Tax residency planning, multi-state advisory, family office RE consulting, and CA-to-NV relocation. Tax Residency Advisors and Dr. Jan Duffy serve CPAs, family offices, and relocating families.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     title: "Services | Tax Residency Advisors",
     url: `${SITE_URL}/services`,
   },
-};
+});
 
 export default function ServicesPage() {
   return (
