@@ -30,14 +30,14 @@ const OFFICE_FAQS = [
   },
   {
     q: "How do I reach Dr. Jan Duffy?",
-    a: "Call 702-222-1964, email info@taxresidencyadvisors.com, or book a time on the contact page. Nevada license S.0197614.LLC.",
+    a: "Call 702-500-1955, email info@taxresidencyadvisors.com, or book a time on the contact page. Nevada license S.0197614.LLC.",
   },
 ];
 
 export const metadata: Metadata = withCanonical("/office", {
   title: "Henderson Office | 901 N Green Valley Pkwy #200d",
   description:
-    "Tax Residency Advisors office: 901 N Green Valley Pkwy #200d, Henderson, NV 89074. Monday–Sunday, 8:00 am to 8:00 pm. Call Dr. Jan Duffy at 702-222-1964.",
+    "Tax Residency Advisors office: 901 N Green Valley Pkwy #200d, Henderson, NV 89074. Monday–Sunday, 8:00 am to 8:00 pm. Call Dr. Jan Duffy at 702-500-1955.",
   openGraph: {
     title: "Henderson Office | Tax Residency Advisors",
     description: `Visit ${NAP_SINGLE_LINE}. Hours: ${HOURS_DISPLAY}.`,

@@ -71,7 +71,7 @@ export const MARKETS: Market[] = [
       },
       {
         heading: "Office visits",
-        body: "Meetings are at 901 N Green Valley Pkwy #200d, Henderson, NV 89074. Hours are Monday through Sunday, 8:00 am to 8:00 pm. Call 702-222-1964 or book on my calendar.",
+        body: "Meetings are at 901 N Green Valley Pkwy #200d, Henderson, NV 89074. Hours are Monday through Sunday, 8:00 am to 8:00 pm. Call 702-500-1955 or book on my calendar.",
       },
     ],
     faqs: [
