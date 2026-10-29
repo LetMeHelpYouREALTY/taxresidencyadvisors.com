@@ -111,7 +111,7 @@ Column 1 — Dr. Jan Duffy
   Las Vegas Real Estate Expert
   Berkshire Hathaway HomeServices Nevada Properties
   NV License: S.0197614.LLC
-  702-222-1964
+  702-500-1955
   info@taxresidencyadvisors.com
 
 Column 2 — Quick Links
@@ -225,7 +225,7 @@ I work with Berkshire Hathaway HomeServices Nevada Properties — the most trust
 
 — Dr. Jan Duffy
    NV License S.0197614.LLC
-   702-222-1964
+   702-500-1955
 ```
 
 **"Why CPAs Choose Dr. Jan" Section (3 columns):**
@@ -493,7 +493,7 @@ Las Vegas Real Estate Expert
 Berkshire Hathaway HomeServices Nevada Properties
 NV License: S.0197614.LLC
 
-📞 702-222-1964
+📞 702-500-1955
 📧 info@taxresidencyadvisors.com
 
 Office: Las Vegas, Nevada

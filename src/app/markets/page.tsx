@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = withCanonical("/markets", {
   title: "Las Vegas and Henderson Markets | Dr. Jan Duffy",
   description:
-    "Summerlin, Henderson, Green Valley, 55+ communities, Strip high-rises, new construction, Skye Canyon, and Centennial Hills. Dr. Jan Duffy, 702-222-1964.",
+    "Summerlin, Henderson, Green Valley, 55+ communities, Strip high-rises, new construction, Skye Canyon, and Centennial Hills. Dr. Jan Duffy, 702-500-1955.",
   openGraph: {
     title: "Markets | Tax Residency Advisors",
     description: "Where I place CPA-referred clients who are establishing a Nevada primary residence.",

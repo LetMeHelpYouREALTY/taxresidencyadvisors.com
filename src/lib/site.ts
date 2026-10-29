@@ -5,9 +5,9 @@ export const SITE_URL = "https://www.taxresidencyadvisors.com";
 export const CALENDLY_URL = "https://calendly.com/drjanduffy/appointment";
 
 /** Client-facing phone. Matches the Google Business Profile CTA line. */
-export const PHONE_DISPLAY = "702-222-1964";
-export const PHONE_E164 = "+1-702-222-1964";
-export const PHONE_HREF = "tel:+17022221964";
+export const PHONE_DISPLAY = "702-500-1955";
+export const PHONE_E164 = "+1-702-500-1955";
+export const PHONE_HREF = "tel:+17025001955";
 export const EMAIL = "info@taxresidencyadvisors.com";
 
 /**
