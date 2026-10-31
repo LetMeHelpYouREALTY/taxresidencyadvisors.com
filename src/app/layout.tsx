@@ -8,6 +8,8 @@ import { CalendlyBadge } from "@/components/CalendlyBadge";
 import { siteGraph } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import { SpeedInsights as VercelSpeedInsights } from "@vercel/speed-insights/next";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -103,6 +105,8 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <VercelAnalytics />
+        <VercelSpeedInsights />
       </body>
     </html>
   );
